@@ -21,3 +21,19 @@ To run the authentication app locally, follow these steps:
 
 1. Clone this repository to your local machine:
 
+## Usage
+
+1. Register a new account by providing the required information.
+2. Log in with your credentials.
+3. Explore the authenticated features such as updating profile information or resetting the password.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/my-feature`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature/my-feature`).
+5. Open a pull request.
+
