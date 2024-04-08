@@ -1,13 +1,14 @@
-const express = require("express");
-const dotenv = require("dotenv").config({
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+dotenv.config({
   path: "./.env",
 });
-const cors = require("cors");
 
 const app = express();
 
-const port = 8000;
+const port = process.env.port;
 
-app.listen(port, () => {
-  console.log(`app is running at ${port}`);
+app.listen(process.env.port, () => {
+  console.log(`app is running at ${process.env.port}`);
 });
