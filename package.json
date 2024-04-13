@@ -1,0 +1,15 @@
+{
+  "name": "mern-auth-app",
+  "version": "1.0.0",
+  "description": "This repository contains the source code for an authentication application built using MERN Stack.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sunil saini",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
