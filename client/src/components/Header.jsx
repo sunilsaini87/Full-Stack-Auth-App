@@ -1,34 +1,44 @@
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { handleError } from "../utils/handleError";
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 export default function Header() {
-  const { currentUser } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:4000/user/logout");
+    } catch (error) {
+      handleError(error);
+    }
+  };
   return (
-    <div className="bg-gray-900 text-gray-300">
-      <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
-        <Link to="/">
-          <h1 className="font-bold">Auth App</h1>
-        </Link>
-        <ul className="flex gap-4">
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="/about">
-            <li>About</li>
-          </Link>
-          <Link to="/profile">
-            {currentUser ? (
-              <img
-                src={currentUser.profilePicture}
-                alt="profile"
-                className="h-7 w-7 rounded-full object-cover"
-              />
-            ) : (
-              <li>Sign In</li>
-            )}
-          </Link>
-        </ul>
-      </div>
-    </div>
+    <nav className="h-[60px] flex w-full bg-slate-900 text-white p-3 justify-between items-center">
+      <h2
+        onClick={() => navigate("/")}
+        className="font-bold text-xl cursor-pointer select-none"
+      >
+        React Login
+      </h2>
+      <ul className="flex gap-1">
+        <li>
+          <button onClick={() => navigate("/login")} className="primary-btn">
+            Login
+          </button>
+        </li>
+        <li>
+          <button onClick={() => navigate("/signup")} className="primary-btn">
+            Signup
+          </button>
+        </li>
+        <li>
+          <button onClick={handleLogout} className="danger-btn">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 }
