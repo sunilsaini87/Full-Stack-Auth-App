@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { handleError } from "../utils/handleError";
 import axios from "axios";
@@ -9,9 +8,14 @@ export default function Header() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:4000/user/logout");
+      await axios.post(
+        "http://localhost:4000/user/logout",
+        {},
+        { withCredentials: true }
+      );
+      // Optionally handle successful logout (e.g., redirect or update state)
     } catch (error) {
-      handleError(error);
+      handleError(error); // Assuming you have a function to handle errors
     }
   };
   return (
