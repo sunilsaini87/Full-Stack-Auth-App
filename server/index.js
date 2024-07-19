@@ -11,7 +11,17 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: "*", credentials: true }));
+
+// Configure CORS to allow all origins (not recommended for production)
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow all origins
+      callback(null, true);
+    },
+    credentials: true,
+  })
+);
 
 // Routes
 app.use("/user", UserAuthRouter);
