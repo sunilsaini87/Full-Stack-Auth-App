@@ -1,19 +1,22 @@
-const express = require("express");
-const UserAuthRouter = require("./routes/UserAuthRouter");
-const dbConnect = require("./lib/dbConnect");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
+import express from "express";
+import UserAuthRouter from "./routes/UserAuthRouter.js";
+import dbConnect from "./lib/dbConnect.js";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+
+// Initialize environment variables
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
-require("dotenv").config();
+app.use(cors({ origin: "*", credentials: true }));
 
-//routes
+// Routes
 app.use("/user", UserAuthRouter);
 
 dbConnect();
-app.listen(4000, () => {
-  console.log("http://localhost:4000");
+app.listen(process.env.PORT, () => {
+  console.log(`http://localhost:${process.env.PORT}`);
 });

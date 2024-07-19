@@ -1,11 +1,12 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   signup,
   login,
   logout,
   myDetails,
-} = require("../controllers/UserAuthController");
-const { verifyToken } = require("../middlewares/verifytoken");
+} from "../controllers/UserAuthController.js";
+import { verifyToken } from "../middlewares/verifytoken.js";
+
 const UserAuthRouter = express.Router();
 
 UserAuthRouter.post("/signup", signup);
@@ -14,4 +15,4 @@ UserAuthRouter.post("/logout", logout);
 
 UserAuthRouter.get("/my-details", verifyToken, myDetails);
 
-module.exports = UserAuthRouter;
+export default UserAuthRouter;
