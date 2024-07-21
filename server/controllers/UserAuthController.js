@@ -63,7 +63,7 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    res.clearCookie("token", { path: "/" }); // Ensure the path matches the cookie path
+    res.clearCookie("token"); // Ensure the path matches the cookie path
     return res.status(200).send({ message: "Logged out successfully!" });
   } catch (error) {
     return res.status(500).send({ message: "Error logging out!", error });
